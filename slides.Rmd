@@ -56,8 +56,7 @@ Abstract:
 
 'riboviz' is an open source software package for processing and analysing ribosome profiling (RNA sequence) data.
 
-Including a short primer on what Workflow Management Systems such as Nextflow 'do' and why they're useful for complex data pipelines, and details on how to get Rmarkdown HTML reports to play nicely as part of a Nextflow workflow. 
-
+Including a short primer on what Workflow Management Systems such as Nextflow 'do' and why they're useful for complex data pipelines like riboviz
 
 </div>
 
@@ -68,7 +67,7 @@ This is a `.html` presentation created in `R Markdown` with `ioslides`.
 
 (It's been written in a [.Rmd](http://rmarkdown.rstudio.com) file, and I generated .html slides by 'knitting' it in Rstudio.)
 
-You can check out the code used to make these slides at the [Talk repo](https://github.com/FlicAnderson/LabTalk-riboviz-20210510) on Github, and adapt it for your own presentations if you like - there's a MIT Licence on the repo, which means: 
+You can check out the code used to make these slides at the [Talk repo](https://github.com/FlicAnderson/LabRetreat_20211108) on Github, and adapt it for your own presentations if you like - there's a MIT Licence on the repo, which means: 
 
 *"Basically, you can do whatever you want as long as you include the original copyright and license notice in any copy of the software/source."*
 
@@ -89,9 +88,10 @@ knitr::include_graphics("https://raw.githubusercontent.com/FlicAnderson/EdinbR-2
 <div style="float: right; width: 55%;">
 ### Felicity 'Flic' Anderson  
 
-**Research Assistant in Bioinformatics** at the [Wallace Lab](https://ewallace.github.io/), Institute for Cell Biology, University of Edinburgh  
+**Research Assistant in Bioinformatics** for 2.5 years at the [Wallace Lab](https://ewallace.github.io/), Institute for Cell Biology, University of Edinburgh  
 
 * **developer** on riboviz project  - _my first project coding in a team_ 
+* co-supervised 3 undergrad & 1 masters student project focussing on using riboviz
 * certified **Carpentries instructor** (foundational data, software & coding courses)
 * background mainly in **R**, some SQL & Bash, new-ish to Python
 </div>
