@@ -1,7 +1,7 @@
 ---
-title: "Lab Retreat Talk"
+title: "Ribosome Profiling & Riboviz Software"
 author: "Flic Anderson"
-date: "06/11/2021"
+date: "08/11/2021"
 output: 
   ioslides_presentation
 ---
@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = FALSE)
     font-size: 12pt;
     position: absolute;
     bottom: 20px;
-    left: 100px;
+    left: 700px;
     line-height: 1.9;
   }
 </style>
@@ -49,31 +49,17 @@ Flic is a member of the Edinburgh Carpentries and a certified Carpentries instru
 
 
 Title: 
-#########
+Ribosome Profiling & Riboviz Software
 
 
 Abstract:  
 
-'riboviz' is an open source software package for processing and analysing ribosome profiling (RNA sequence) data.
-
-Including a short primer on what Workflow Management Systems such as Nextflow 'do' and why they're useful for complex data pipelines like riboviz
+Explaining ribosome profiling technique, and 'riboviz' open source software package for processing and analysing ribosome profiling (RNA sequence) data.
 
 </div>
 
 
-## HOW TO (RE-)USE THIS MATERIAL
-
-This is a `.html` presentation created in `R Markdown` with `ioslides`. 
-
-(It's been written in a [.Rmd](http://rmarkdown.rstudio.com) file, and I generated .html slides by 'knitting' it in Rstudio.)
-
-You can check out the code used to make these slides at the [Talk repo](https://github.com/FlicAnderson/LabRetreat_20211108) on Github, and adapt it for your own presentations if you like - there's a MIT Licence on the repo, which means: 
-
-*"Basically, you can do whatever you want as long as you include the original copyright and license notice in any copy of the software/source."*
-
-Source: [tl;drLegal](https://tldrlegal.com/license/mit-license)
-
-# TALK TITLE HERE 
+# Ribosome Profiling & Riboviz Software
 
 ## Me!
 
@@ -88,10 +74,9 @@ knitr::include_graphics("https://raw.githubusercontent.com/FlicAnderson/EdinbR-2
 <div style="float: right; width: 55%;">
 ### Felicity 'Flic' Anderson  
 
-**Research Assistant in Bioinformatics** for 2.5 years at the [Wallace Lab](https://ewallace.github.io/), Institute for Cell Biology, University of Edinburgh  
+**Research Assistant in Bioinformatics** at the [Wallace Lab](https://ewallace.github.io/), Institute for Cell Biology, University of Edinburgh  
 
-* **developer** on riboviz project  - _my first project coding in a team_ 
-* co-supervised 3 undergrad & 1 masters student project focussing on using riboviz
+* **developer** on riboviz project; co-supervised 3 undergrad & 1 masters student projects
 * certified **Carpentries instructor** (foundational data, software & coding courses)
 * background mainly in **R**, some SQL & Bash, new-ish to Python
 </div>
@@ -105,50 +90,99 @@ https://ewallace.github.io/ - Wallace lab website
 https://edcarp.github.io/ - Edinburgh Carpentries, local chapter of The Carpentries organisation (https://carpentries.org/)
 </div>
 
+
+
+
 # Outline: 
 
 ## Outline: 
 
-* riboviz & ribosome profiling
-* Workflow Management Systems
-* Nextflow in a nutshell  
+* Riboviz & Ribosome Profiling 
+* How Riboviz Works
+* What It Does Well
+* What I've Enjoyed 
+* A Question & A Challenge
+
 
 
 ## Riboviz
 
 **Riboviz is open source software which processes & analyses ribosome profiling (sequencing) data**  
 
-*Developed in collaborative project BBSRC-NSF funded project*
+*Developed in collaborative project BBSRC-NSF funded project* - apply software engineering techniques to create more robust & reliable code: _**more researcher time** for biological questions_
 
 Ribosome profiling data helps unlock details of **translation**:   
-_how the cell creates proteins from genetic code (DNA, RNA)._ 
+_how the cell creates proteins from genetic code (DNA, RNA)_ 
 
-riboviz helps researchers check **quality control** & understand the **characteristics** of the experimental data - ie. _do different experimental conditions change how the cell translates proteins from genes?_
+riboviz helps researchers check **quality control** & understand the **characteristics** of the experimental data - ie. _do different experimental conditions change how the cell translates proteins from genes?_ 
+
 
 <font size="2">riboviz at github: https://github.com/riboviz/riboviz</font>
 
 <div class="notes">
-...
+Riboviz 2.0 pre-print: https://www.biorxiv.org/content/10.1101/2021.05.14.443910v1.full
 </div>
 
 
-## Riboviz
 
-Developing/improving riboviz software = **more researcher time** for biological questions
+## Thanks/Acknowledgements
 
-_More biological code, less programming code!_
+riboviz is a BBSRC-NSF funded collaborative project: 
 
-The project's aims are to apply software engineering techniques to create more robust & reliable code:
+* **The Wallace Lab** - *University of Edinburgh*:  
+Edward Wallace, + past students (Ania Kurowska, Siyin Xue, Emma MacKenzie, Sophie Winterbourne)  
+* **The Shah Lab** -  *Rutgers University*:  
+Premal Shah, John Favate, Alex Cope, Peter Tilton  
+* **The Lareau Lab** - *University of California, Berkeley*:  
+Liana Lareau, Amanda Mok, Vikram Shivakumar  
+* **EPCC** - *University of Edinburgh*:  
+Kostas Kavousannakis, Mike Jackson, Junchen Liu  
 
-riboviz at github: https://github.com/riboviz/riboviz
+<div class="notes">
+... slide notes ...
+</div>
+
+
+
+## Ribosome Profiling Method 
+
+<div style="float: left; width: 70%;">
+```{r, out.width = "525"}
+knitr::include_graphics("https://raw.githubusercontent.com/FlicAnderson/EdinbR-20210519/main/images/Ingolia2014_polysomes-to-footprints.png")
+```
+<font size="2">[Ingolia et al. 2014](https://doi.org/10.1038/nrg3645)</font>
+</div>
+
+<div style="float: right; width: 30%;">
++ Experimental steps create snippets of **sequence data**
++ Need to **process** sequence reads to 'undo' the experimental steps 
++ **Analyse** to get plots & information
++  **=> riboviz time!**
+</div>
 
 <div class="notes">
 
-more researcher time: rather than tinkering with pipelines & bespoke analysis code…  
+Ribosome Profiling Method involves many experimental steps. 
 
-Robust & reliable code gives more confidence in results
+Processing this data involves effectively trying to 'undo' these steps to get at the meaning of what's happening in those cells.
+
+Sequencing 'reads' are the data we're working with.
+
+Take these reads & submit to further processing & analysis to get plots & information.
+
+That’s where riboviz comes in!
+
+Processing:
+Multiple steps using a range of other tools ‘plumbed-in’.
+
+Analysis:
+Analyse & quantify data: 
+Create outputs (including for quality-control, further analysis)
+
+Original paper: Ingolia NT, Ghaemmaghami S, Newman JR, Weissman JS (2009). "Genome-wide analysis in vivo of translation with nucleotide resolution using ribosome profiling". Science. 324 (5924): 218–23. doi:10.1126/science.1168978
 
 </div>
+
 
 
 ## Riboviz Workflow: Inputs
@@ -162,6 +196,41 @@ knitr::include_graphics("https://raw.githubusercontent.com/FlicAnderson/LabTalk-
 <div class="notes"> 
 
 Additional organism-specific data files: ie the pipeline can run without them, but will not produce specific plots without them. 
+
+</div> 
+
+
+## Riboviz Workflow: Processing
+
+<div class="centered">
+```{r, out.width = "800"}
+knitr::include_graphics("https://raw.githubusercontent.com/FlicAnderson/LabTalk-riboviz-20210510/main/images/riboviz-workflow_processing-aligned.png")
+``` 
+</div>
+
+<div class="notes"> 
+
+Processing:  
+* Removing adapter sequences  
+* Remove UMIs (Unique Molecular Identifiers) & barcodes if present  
+* Demultiplex / Deduplicate reads if required  
+* Need to filter out contaminant reads  
+* Align reads to transcriptome   
+
+</div>
+
+
+## Riboviz Workflow: Processing
+
+<div class="centered">
+```{r, out.width = "800"}
+knitr::include_graphics("https://raw.githubusercontent.com/FlicAnderson/LabTalk-riboviz-20210510/main/images/riboviz-workflow_processing-ribogrid.png")
+``` 
+</div>
+
+<div class="notes">
+
+Storing data in really efficient .h5 format (hierarchical, like a file system w/ folders type of organisation)
 
 </div>
 
@@ -182,6 +251,139 @@ Create outputs (including for quality-control, further analysis)
 One main R script which generates these plots & various analysis data; this is run for each sample, outputting .tsv and .pdf files into a folder for each sample within the overall dataset output folder.
 
 </div>
+
+
+
+## Riboviz Workflow: + Visualization
+
+<div class="centered">
+```{r, out.width = "800"}
+knitr::include_graphics("https://raw.githubusercontent.com/FlicAnderson/LabTalk-riboviz-20210510/main/images/riboviz-workflow_visualization.png")
+``` 
+</div>
+
+<div class="notes">
+
+As part of making riboviz more user-friendly, wanted to generate a per-sample .html report based on the summary data and pdf outputs already generated by riboviz
+
+</div>  
+
+
+
+## What Riboviz Does Well
+
+* it works
+  - on many datasets from many species
+  - for many people
+* count reads and assess read frame on pre-annotated ORFs
+* quality control figures are informative
+* easy to add new data for same transcriptome/organism
+* multiplexed data & UMIs work smoothly 
+* visualization
+* thoroughly documented
+
+
+
+## What I've enjoyed about being involved on the riboviz project: 
+
+* being **part of a team** on a research software development project
+* **learning better practices** in software development 
+* **training others** in software tools & techniques 
+* finding out about **what helps/hinders new users** & researchers
+
+ -> starting PhD in Jan 2022:  
+    *What aspects of Research Software projects generate effective & successful software?*  
+    tools, techniques, teaching & 'environmental factors'
+
+
+
+## Questions For You
+
+If you are a software user or developer...  
+**does your scientific method & hypothesis-thinking extend to your software?** 
+
+* do you know how to **test** your software like it's a hypothesis? 
+* could someone else **reproduce** your use of software for research and get the same results? 
+* would you **check data** from a new software tool with the same mindset as from an untested wet lab protocol or uncalibrated item of equipment? 
+
+Challenge: *approach research software tools scientifically too!*
+
+
+# Questions For Me?
+
+
+<div class="notes">
+... slide notes ...
+</div> 
+
+
+
+## HOW TO (RE-)USE THIS MATERIAL
+
+This is a `.html` presentation created in `R Markdown` with `ioslides`. 
+
+(It's been written in a [.Rmd](http://rmarkdown.rstudio.com) file, and I generated .html slides by 'knitting' it in Rstudio.)
+
+You can check out the code used to make these slides at the [Talk repo](https://github.com/FlicAnderson/LabRetreat_20211108) on Github, and adapt it for your own presentations if you like - there's a MIT Licence on the repo, which means: 
+
+*"Basically, you can do whatever you want as long as you include the original copyright and license notice in any copy of the software/source."*
+
+Source: [tl;drLegal](https://tldrlegal.com/license/mit-license)
+
+
+
+## Features of Ribosome Profiling Data
+
+* Looking for **3-nucleotide periodicity**: ribosomes moving along mRNA transcript 1 codon (3 nucleotides) at a time  
+
+* Most reads **map to coding regions** (98.8% in Ingolia et al. 2009)  
+* Reasonable read-lengths (e.g. should look for **~28-30NT**)  
+
+* Looking for most reads to be **in one frame**  
+
+
+<font size="2">[Ingolia et al. 2009](https://doi.org/10.1126/science.1168978)</font>
+
+<div class="notes">
+
+[Ingolia et al. 2009 - Science 324(5924):218-23 "Genome-wide analysis in vivo of translation with nucleotide resolution using ribosome profiling", doi: 10.1126/science.1168978](https://doi.org/10.1126/science.1168978).
+
+28-30NT due to the 'width' of the ribosome as this is what 'protected' the mRNA from the nucleases in the experiment's library preparation steps.
+
+</div>
+
+## RPF Data & Reading Frame 
+
+
+<div class="centered">
+```{r, out.width = "700"}
+knitr::include_graphics("https://raw.githubusercontent.com/FlicAnderson/LabTalk-riboviz-20210510/main/images/riboviz-output_frame.png")
+``` 
+</div>
+
+Many of riboviz's output plots let us examine these features.  
+
+
+<font size="2">Reading Frame: https://www.ncbi.nlm.nih.gov/Class/MLACourse/Original8Hour/Genetics/readingframe.html; Data: Guydosh & Green (2014). DOI: [10.1016/j.cell.2014.02.006](https://doi.org/10.1016/j.cell.2014.02.006).</font>
+
+
+<div class="notes">
+
+Ribosome profiling data is really useful for investigating translational mechanics particularly because of the information it provides about the active open reading frame!
+
+Because a codon is 3 nucleotides, where a ribosome 'starts' reading the mRNA will affect what's translated. 
+
+Can locate the start codon ‘AUG’ (from annotation position information from a .gff or sequence info) & determine what should be the reading frame based on that. 
+
+Can determine which reading frame(s) are being actively translated from the counts of reads sequenced which match each frame. Can look at if this is altered by particular characteristics of the gene or sequence for example.
+
+Outputs like these help users determine whether the data looks as expected (assists QC).  
+
+Data: Guydosh & Green (2014). “Dom34 rescues ribosomes in 3' untranslated regions.” Cell. 156 (5): 950-62. doi: 10.1016/j.cell.2014.02.006.   
+
+</div>
+
+
 
 
 ## Riboviz Workflow: .PDF Outputs
@@ -210,99 +412,19 @@ This was a dataset selected by Ania Kurowska (undergrad project in the Wallace l
 </div>
 
 
-## Riboviz Workflow: + Visualization
 
-<div class="centered">
-```{r, out.width = "800"}
-knitr::include_graphics("https://raw.githubusercontent.com/FlicAnderson/LabTalk-riboviz-20210510/main/images/riboviz-workflow_visualization.png")
-``` 
-</div>
+## How Riboviz Works
 
-<div class="notes">
+Riboviz has lots of steps - some of which run external tools (like [`cutadapt`](https://cutadapt.readthedocs.io/en/stable/) for removing adapters from mRNA transcript sequences), some of which are bespoke processing or analysis code.
 
-As part of making riboviz more user-friendly, wanted to generate a per-sample .html report based on the summary data and pdf outputs already generated by riboviz
+Biological data pipelines can often be unweildy... We use a Workflow Management System called **[Nextflow](https://www.nextflow.io/)**  
 
-</div>  
+Nextflow handles the admin-related tasks for us (check **files exist**, create **log files**, queue & **run tasks efficiently**)
 
-# Workflow Management Systems (WfMS) & Nextflow
-
-## Workflow Management Systems 
-
-Workflow Management Systems (WfMS) provide infrastructure to set up, run & monitor a defined set of tasks (processes). 
-
- * **run time management** (the infrastructure supporting task management & execution) & **parallelism**
-
- * **portability / reproducibility** (same results, different machines)  
-
- * **faster troubleshooting** (with re-run options & log files)  
- 
- * **easily shareable workflow scripts**  
- 
-Some examples are: Snakemake, Toil, cwltool and **Nextflow**
-
-
-<div class="notes">   
-
-* can easily 'containerise' code & dependencies for easier deployment in different computing environments 
-
-* the same workflow can be run in different computing infrastructure such as HPC or local machine  
-
-* the WfMS handles the different tasks and manages their execution - instead of running 'in order', tasks can be split up and parallelised to run at the same time; error handling & logging generated by system
-
-* having the 'admin' handled by the WfMS means the same results on re-run, regardless of platform; specification is clearer  
-
-* can share your workflow more easily as it includes specification details as well as describing the workflow  
-
-* many WfMS let you re-run certain steps of a workflow if something has changed or broken, without needing to re-run ALL parts ('re-entrancy')  
-
-My colleagues involved on riboviz wrote a paper on how we selected the right workflow management system for the project: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008622  
-
-These tasks might depend on each other, for example as in a data processing pipeline (where the output of one stage becomes the input of the next step) or allow parts of the pipeline to be re-run without needing to start from the beginning. 
-
-A Workflow Management System lets you join up all the tasks into one workflow, which you can run with one command. No chopping & changing between software, languages, or different environments!
-
-
-</div>
-
-## Why not just use a script?
-
-'riboviz' _was_ previously controlled by a **python script** which ran other scripts (bash, python, R)
-
-_More complex pipeline -> more admin-related development time!_ 
-
-WfMS handle the admin-related tasks better (check **files exist**, create **log files**, queue & **run tasks efficiently**)
-
-_Rather than creating **bespoke code**, we can use existing features_ - following scientific computing best practice: _"Re-use code instead of re-writing it"_  
-
-<font size=2>Wilson et al. (2014) [Best Practices for Scientific Computing](https://doi.org/10.1371/journal.pbio.1001745). PLoS Biol 12(1): e1001745. </font>
-
-<div class="notes">
-
-More details on riboviz and requirements for a WfMS in the paper: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008622  
-
-'riboviz' was previously run by a python script. Running this script then carried out all the data processing and analysis in bash, python and R. 
-
-But as we added more functionality, extra tools and features, and it became more complex, we spent more time writing features around running the steps of the pipeline and less actual biological feature content!  
-
-WfMS handle more of the process-related admin such as ensuring task inputs exist, creating log files, and queuing up the tasks to run in the right order and in an efficient manner according to the computing infrastructure. 
-
-This latter point is key: in a script, tasks will happen sequentially based on their position. Having a WfMS splitting up these tasks and running them as soon as they're 'ready' makes it much more efficient (important if you're running big datasets through complex pipelines which can take hours!)
-
-Think of a script which runs lots of separate functions to do different data analysis tasks: you can execute the whole script, and all the commands inside are run. But, often workflow management systems allow several of those commands to be run at the same time, rather than waiting until their 'turn' in the script. 
-
-</div>
-
-
-## Nextflow
-
-Lots of Workflow Management System Benefits, including: 
-
-* tasks split up efficiently & run based on **availability of inputs** - no waiting for unrelated tasks!  
-* **resume option** - lets you re-run the pipeline from the last successful point if it stops ("re-entrancy")  
-* **simple syntax** so you can re-use existing scripts
-* you can use **containerisation** (such as docker/singularity) and **conda** to bundle and/or manage your software
+Helps with: reproducibility & logging, helpful error handling procedures, ease of use & re-running, usable by other researchers elsewhere! 
 
 <font size="2">Jackson, Kavoussanakis & Wallace. (2021). [Using prototyping to choose a bioinformatics workflow management system](https://doi.org/10.1371/journal.pcbi.1008622)</font>  
+
 
 <div class="notes">  
 
@@ -316,38 +438,4 @@ Nextflow combines a **runtime environment** (the stuff that runs other stuff) an
 
 DSL: html is a DSL for web pages for example, SQL for databases. 
 
-
-Answer: 
-* what is it
-* why do we use it?
-* what was the reasoning of switching to this from python/bash?
-
 </div>
-
-
-## Thanks/Acknowledgements
-
-riboviz is a BBSRC-NSF funded collaborative project: 
-
-
-* **The Wallace Lab** - *University of Edinburgh*:  
-Edward Wallace, Emma MacKenzie, Sophie Winterbourne + past students (Ania Kurowska, Siyin Xue)  
-* **The Shah Lab** -  *Rutgers University*:  
-Premal Shah, John Favate, Alex Cope, Peter Tilton  
-* **The Lareau Lab** - *University of California, Berkeley*:  
-Liana Lareau, Amanda Mok, Vikram Shivakumar  
-* **EPCC** - *University of Edinburgh*:  
-Kostas Kavousannakis, Mike Jackson, Junchen Liu  
-
-
-<div class="notes">
-... slide notes ...
-</div>
-
-
-# Questions?
-
-
-<div class="notes">
-... slide notes ...
-</div> 
