@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <script>
     $(document).ready(function() {
-      $('slide:not(.title-slide, .backdrop, .segue)').append('<footer label=\"bit.ly/#######"></footer>');    
+      $('slide:not(.title-slide, .backdrop, .segue)').append('<footer label=\"bit.ly/retreat-riboviz"></footer>');    
     })
 </script>
 
@@ -59,7 +59,6 @@ Explaining ribosome profiling technique, and 'riboviz' open source software pack
 </div>
 
 
-# Ribosome Profiling & Riboviz Software
 
 ## Me!
 
@@ -77,8 +76,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/FlicAnderson/EdinbR-2
 **Research Assistant in Bioinformatics** at the [Wallace Lab](https://ewallace.github.io/), Institute for Cell Biology, University of Edinburgh  
 
 * **developer** on riboviz project; co-supervised 3 undergrad & 1 masters student projects
-* certified **Carpentries instructor** (foundational data, software & coding courses)
-* background mainly in **R**, some SQL & Bash, new-ish to Python
+* certified **[Carpentries](https://carpentries.org/) instructor** (foundational data, software & coding courses)
 </div>
 
 <div class="notes"> 
@@ -93,7 +91,6 @@ https://edcarp.github.io/ - Edinburgh Carpentries, local chapter of The Carpentr
 
 
 
-# Outline: 
 
 ## Outline: 
 
@@ -104,6 +101,7 @@ https://edcarp.github.io/ - Edinburgh Carpentries, local chapter of The Carpentr
 * A Question & A Challenge
 
 
+These slides are available [on GitHub](https://github.com/FlicAnderson/LabRetreat_20211108)
 
 ## Riboviz
 
@@ -273,18 +271,18 @@ As part of making riboviz more user-friendly, wanted to generate a per-sample .h
 ## What Riboviz Does Well
 
 * it works
-  - on many datasets from many species
+  - on many datasets 
+  - from many species
   - for many people
-* count reads and assess read frame on pre-annotated ORFs
 * quality control figures are informative
 * easy to add new data for same transcriptome/organism
-* multiplexed data & UMIs work smoothly 
 * visualization
 * thoroughly documented
 
+[Riboviz 2.0 pre-print](https://www.biorxiv.org/content/10.1101/2021.05.14.443910v1.full)
 
 
-## What I've enjoyed about being involved on the riboviz project: 
+## What I've Enjoyed About Riboviz: 
 
 * being **part of a team** on a research software development project
 * **learning better practices** in software development 
@@ -292,21 +290,24 @@ As part of making riboviz more user-friendly, wanted to generate a per-sample .h
 * finding out about **what helps/hinders new users** & researchers
 
  -> starting PhD in Jan 2022:  
-    *What aspects of Research Software projects generate effective & successful software?*  
-    tools, techniques, teaching & 'environmental factors'
+     *What aspects of Research Software projects generate effective & successful software?*  
+    
+  tools, techniques, teaching & environmental factors
 
 
 
-## Questions For You
+## Questions & A Challenge For You
 
 If you are a software user or developer...  
 **does your scientific method & hypothesis-thinking extend to your software?** 
 
+
 * do you know how to **test** your software like it's a hypothesis? 
 * could someone else **reproduce** your use of software for research and get the same results? 
-* would you **check data** from a new software tool with the same mindset as from an untested wet lab protocol or uncalibrated item of equipment? 
+* would you **evaluate** data from a new software tool with the same mindset as from an untested wet lab protocol or uncalibrated item of equipment? 
 
-Challenge: *approach research software tools scientifically too!*
+
+*Approach use of research software tools scientifically too!*
 
 
 # Questions For Me?
